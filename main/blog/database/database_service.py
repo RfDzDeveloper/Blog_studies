@@ -138,10 +138,25 @@ class DatabaseService:
         if not response:
             raise Comment.DoesNotExist(
                 f"Can't edit this: {request.POST['comment_id']}.\nThis comment don't exists!")
-        com_db: Comment = Comment.objects.filter(id=request.POST['comment_id'])
+        com_db: Comment = Comment.objects.filter(id=request.POST['comment_id'])[0]
         com_db = comment
         com_db.save()
-        return com_db
+        return com_db    
+    
+    def delete_comment(self, request: HttpRequest) -> bool:
+        response: bool = Comment.objects.filter(id=request.POST['comment_id']).exists()
+        if not response:
+            raise Comment.DoesNotExist(
+                f"Comment id: {request.POST['comment_id']} doesn't exist!")
+        Comment.objects.filter(id=request.POST['comment_id']).delete()
+        return True  
+    
+    def get_new_posts(self) -> list[Post]:
+        return Post.objects.all().order_by(
+               'publish_date').values_list('id', 'title', 'publish_date')[:10]
         
-        
+    def get_all_posts(self, number_post) -> list[Post]:
+        return Post.objects.all().order_by(
+               'publish_date').values_list(
+                   'id', 'title', 'publish_date', 'post_rating')[:number_post]
         

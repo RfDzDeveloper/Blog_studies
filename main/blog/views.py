@@ -8,14 +8,34 @@ import django.contrib.messages as messages
 from blog.database.database_service import DatabaseService
 from blog.models import Post, Comment
 
+
 def home(request: HttpRequest):
     return render(request, "home.html")
 
 @login_required(login_url='login')
-def read_posts(request: HttpRequest):    
+def my_home(request: HttpRequest):   
+    try: 
+        context: dict = {'post_list': DatabaseService().get_new_posts()}
+        return render(request, "my_home.html", context)
+    except Exception as ex:
+        messages.error(request, ex)
+        return redirect('home')
+
+@login_required(login_url='login')
+def view_all_posts(request: HttpRequest):
     try:
-        posts: list[Post] = Post.objects.filter(id= request.user.id)
-        context: dict = {'posts': posts}
+        context: dict = {'post_list': DatabaseService().get_all_posts(20)}
+        return render(request, 'view_all_posts.html', context)
+    except Exception as ex:
+        messages.error(request, ex)
+        return redirect('my_world')
+    
+@login_required(login_url='login')
+def read_post(request: HttpRequest, post_id: int):    
+    try:
+        context: dict = {'post': Post.objects.filter(id=post_id),
+                         'comments': Comment.objects.filter(
+                             post__id=request.POST['post_id']).order_by('publish_date')}        
         return render(request, 'read_posts.html', context)
     except Exception as ex:
         messages.error(request, ex)
@@ -23,7 +43,7 @@ def read_posts(request: HttpRequest):
 
 def login_view(request: HttpRequest):
     if request.user.is_authenticated:
-        return redirect('read_posts')    
+        return redirect('my_home')    
     
     if request.method == "POST":
         try:            
@@ -66,12 +86,58 @@ def register(request: HttpRequest):
 
 @login_required(login_url='login')
 def add_post(request: HttpRequest):
-    return render(request, 'add_post.html')
+    if request.method == 'POST':
+        try:
+            post: Post = DatabaseService().add_post(request)
+            context: dict = {'message': 'Successful added post',
+                             'post': post}
+            return render(request, 'add_post.html', context)
+        except Exception as ex:
+            messages.error(request, ex)            
+            return render(request, 'add_post.html')
+    else:
+        return render(request, 'add_post.html')    
 
 @login_required(login_url='login')
+def edit_post(request: HttpRequest):
+    if request.method == 'POST':
+        try:            
+            context: dict = {'message': 'Successful edit post',
+                             'post': DatabaseService().edit_post(request)}
+            messages.success(request, context['message'])
+            return redirect('view_user_post')
+        except Exception as ex:
+            messages.error(request, ex)
+            return redirect('my_world')
+    else:
+        return render(request, 'edit_post.html')
+    
+@login_required(login_url='login')
 def view_user_post(request: HttpRequest):
-    return render(request, 'view_user_posts')
+    try:
+        post_list: list[Post] = Post.objects.filter(user__id=request.user.id)
+        context: dict = {'post_list': post_list}
+        return render(request, 'view_user_posts', context)
+    except Exception as ex:
+        messages.error(request, ex)
+        return redirect('my_home')        
 
 @login_required(login_url='login')
 def delete_post(request: HttpRequest):
-    return redirect("view_user_post")
+    try:
+        DatabaseService().delete_post(request)        
+        context: dict = {"message": "Successful added post."}
+        messages.success(request, context['message'])        
+    except Exception as ex:
+        messages.error(request, ex)
+    return redirect('view_user_post')
+
+@login_required(login_url='login')
+def add_comment(request: HttpRequest):
+    try:
+        DatabaseService().add_comment(request)
+        context: dict = {'message': 'Successful added comment'}
+        messages.success(request, context['message'])        
+    except Exception as ex:
+        messages.error(request, ex)
+    return redirect('read_post', post_id=request.POST['post_id'])
