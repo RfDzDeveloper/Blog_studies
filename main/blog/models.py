@@ -15,3 +15,4 @@ class Comment(models.Model):
     publish_date: models.DateField = models.DateField(auto_now=True, db_column="PublishDate")
     text: str = models.CharField(max_length=500, db_column="Text")
     user: User = models.ForeignKey(User, db_column='User', on_delete=models.CASCADE)
+    post: Post = models.ForeignKey(Post, db_column='Post', on_delete=models.CASCADE)

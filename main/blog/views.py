@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import django.contrib.messages as messages
-from database.database_service import DatabaseService
+from blog.database.database_service import DatabaseService
 from blog.models import Post, Comment
 
 def home(request: HttpRequest):
