@@ -153,11 +153,11 @@ class DatabaseService:
     
     def get_new_posts(self) -> list[Post]:
         return Post.objects.all().order_by(
-               'publish_date').values_list('id', 'title', 'publish_date')[:10]
+               '-publish_date').values_list('id', 'title', 'publish_date')[:10]
         
     def get_all_posts(self, number_post: int) -> list[Post]:
         return Post.objects.all().order_by(
-               'publish_date').values_list(
+               '-publish_date').values_list(
                    'id', 'title', 'publish_date', 'post_rating')[:number_post]
                
     def get_user_by_email(self, request: HttpRequest) -> User:
