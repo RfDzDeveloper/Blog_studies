@@ -5,8 +5,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import django.contrib.messages as messages
+from blog.validators.validators import PasswordValidator
+from helpers.token_service import generate_url_token
+from threading import Thread
+from emails.email_service import EmailService
 from blog.database.database_service import DatabaseService
-from blog.models import Post, Comment
+from blog.models import Post, Comment, EmailToken
 
 
 def home(request: HttpRequest):
@@ -35,7 +39,8 @@ def read_post(request: HttpRequest, post_id: int):
     try:
         context: dict = {'post': Post.objects.filter(id=post_id),
                          'comments': Comment.objects.filter(
-                             post__id=request.POST['post_id']).order_by('publish_date')}        
+                             post__id=request.POST['post_id']).order_by('publish_date'),
+                         'ratings': DatabaseService().get_post_ratings(post_id)}        
         return render(request, 'read_posts.html', context)
     except Exception as ex:
         messages.error(request, ex)
@@ -146,4 +151,54 @@ def edit_comment(request: HttpRequest):
         DatabaseService().edit_comment(request)
     except Exception as ex:
         messages.error(request, ex)
-    return redirect('read_post', post_id=request.POST['post_id'])        
+    return redirect('read_post', post_id=request.POST['post_id'])     
+
+def forgot_password(request: HttpRequest):
+    if request.method == 'POST':
+        try:            
+            user: User = DatabaseService().get_user_by_email(request)         
+            token: str = generate_url_token()
+            EmailToken.objects.create(token=token, email=request.POST['email'])
+            Thread(target=EmailService(
+                to=[user.email], firstname=user.first_name).send_reset_pass, args=(token,)).start()
+                        
+            context: dict = {'message': 'Successful send email!\nCheck inbox :)'}
+            messages.success(request, context['message'])             
+        except Exception as ex:           
+            messages.error(request, ex) 
+        return redirect('login')
+    else:
+        return render(request, 'blog/enter_email_forgot_pass.html')
+    
+def reset_password(request, token):
+    try:
+        email: str = DatabaseService().check_exists_token(token)
+        context: dict = {'email': email}  
+        return render(request, 'blog/change_password.html', context)
+    except Exception as ex:
+        messages.error(request, ex)
+        return redirect('login')  
+    
+def change_password(request):
+    try:
+        PasswordValidator(6).make_full_password_validation(
+            request.POST['password'], request.POST['confirm_password'])        
+        user: User = User.objects.get(email=request.POST['email'])       
+        user.set_password(request.POST['password'])
+        user.save()
+        redirect('successful_reset_password')
+    except Exception as ex:
+        messages.error(request, ex)
+        context: dict = {'email': request.POST['email']}
+        return render(request, 'blog/change_password.html', context)
+
+def success_reset_password(request: HttpRequest):
+    return render(request, 'blog/success_reset_pass.html')
+
+@login_required(login_url='login')
+def add_ratings(request: HttpRequest):
+    try:
+        DatabaseService().add_rating(request.POST['post_id'], request.user, request.POST['rating'])
+    except Exception as ex:
+        messages.error(request, ex)
+    return redirect('read_post', post_id=request.POST['post_id'])

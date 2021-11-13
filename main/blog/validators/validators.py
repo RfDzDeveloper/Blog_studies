@@ -2,7 +2,7 @@ import re
 
 
 class PasswordValidator:
-    def __init__(self, min_length) -> bool:
+    def __init__(self, min_length: int) -> bool:
         self.min_length = min_length
 
     # length validation

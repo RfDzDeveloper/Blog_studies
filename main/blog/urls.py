@@ -15,4 +15,9 @@ urlpatterns = [
     path('my_all_posts/', views.view_user_post, name='view_user_post'),
     path('add_comment/', views.add_comment, name='add_comment'),
     path('edit_comment/', views.edit_comment, name='edit_comment'),
+    path('forgot_password/', views.forgot_password, name='forgot_password'),
+    path('reset_password/<str:token>/', views.reset_password, name='reset_password'),
+    path('success_reset_password/', views.success_reset_password, name="successful_reset_password"),    
+    path('change_password/', views.change_password, name='change_password'),
+    path('add_rating/', views.add_ratings, name='add_rating'),
 ]

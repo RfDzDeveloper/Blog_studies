@@ -1,6 +1,6 @@
 from django.http.request import HttpRequest
 from django.contrib.auth.models import User
-from blog.models import Post, Comment
+from blog.models import Post, Comment, EmailToken, UserRatings
 from blog.validators.validators import UserValidator, PasswordValidator
 
 
@@ -155,8 +155,38 @@ class DatabaseService:
         return Post.objects.all().order_by(
                'publish_date').values_list('id', 'title', 'publish_date')[:10]
         
-    def get_all_posts(self, number_post) -> list[Post]:
+    def get_all_posts(self, number_post: int) -> list[Post]:
         return Post.objects.all().order_by(
                'publish_date').values_list(
                    'id', 'title', 'publish_date', 'post_rating')[:number_post]
+               
+    def get_user_by_email(self, request: HttpRequest) -> User:
+        check: bool = User.objects.filter(email=request.POST['email']).exists()        
+        if not check:
+            raise User.DoesNotExist(f"Can't fine user by email: {request.POST['email']}")
+        return User.objects.get(email=request.POST['email'])
+        
+    def check_exists_token(self, token: str) -> str:
+        response: EmailToken = EmailToken.objects.filter(token=token)
+        if len(response) == 0:
+            raise EmailToken.DoesNotExist("Try again reset password!\nToken Error!")
+        response.delete()
+        return response.email
+    
+    def add_rating(self, post_id: int, user: User, rating: int) -> None:
+        response: list[UserRatings] = UserRatings.objects.filter(
+            user__id=user.pk).filter(post__id=post_id)
+        if len(response) > 0:
+            raise Exception("You can't rate again this post!")
+    
+        post: Post = Post.objects.get(id=post_id)
+        UserRatings(ratings=rating, user=user, post=post).save()
+        
+    def get_post_ratings(self, post_id: int) -> float:
+        response: list[UserRatings] = UserRatings.objects.filter(post__id=post_id)
+        sum_value: int = 0
+        for item in response:
+            sum_value += item.ratings
+        average: float = sum_value/len(response)
+        return average
         
