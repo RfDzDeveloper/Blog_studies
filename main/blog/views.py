@@ -135,9 +135,15 @@ def delete_post(request: HttpRequest):
 @login_required(login_url='login')
 def add_comment(request: HttpRequest):
     try:
-        DatabaseService().add_comment(request)
-        context: dict = {'message': 'Successful added comment'}
-        messages.success(request, context['message'])        
+        DatabaseService().add_comment(request)               
     except Exception as ex:
         messages.error(request, ex)
     return redirect('read_post', post_id=request.POST['post_id'])
+
+@login_required(login_url='login')
+def edit_comment(request: HttpRequest):
+    try:
+        DatabaseService().edit_comment(request)
+    except Exception as ex:
+        messages.error(request, ex)
+    return redirect('read_post', post_id=request.POST['post_id'])        

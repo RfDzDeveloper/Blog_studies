@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -13,4 +13,6 @@ urlpatterns = [
     path('edit_post/', views.edit_post, name='edit_post'),
     path('delete_post/', views.delete_post, name='delete_post'),
     path('my_all_posts/', views.view_user_post, name='view_user_post'),
+    path('add_comment/', views.add_comment, name='add_comment'),
+    path('edit_comment/', views.edit_comment, name='edit_comment'),
 ]
