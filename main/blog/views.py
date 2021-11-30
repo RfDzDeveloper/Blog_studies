@@ -65,12 +65,12 @@ def login_view(request: HttpRequest):
                 else:
                     context: dict = {'message': 'Wrong login attempt.'}
                     messages.error(request, context['message'])
-                    return render(request, 'login')
+                    return render(request, 'login.html')
         except Exception as ex:            
             messages.add_message(request, messages.ERROR, ex)
-            return render(request, 'login')
+            return render(request, 'login.html')
     else:
-        return render(request, 'login')    
+        return render(request, 'login.html')    
 
 def logout_view(request: HttpRequest):
     logout(request)
