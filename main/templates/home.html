@@ -1,0 +1,102 @@
+{% extends 'core.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="home">
+        <div class="post">
+            <div class="post-header">
+                <div class='title'><A>POST O MOTORACH</A></div>
+                <div class='autor-date'>17 MAY 2021 / BY DAN DANIELOWSKI</div>
+
+            </div>
+            <div class="post-content">
+
+                <p>{% lorem 1 b random %} </p>
+                <button class="more-content"><a>CONTINUE</a></button>
+            </div>
+            <div class="post-footer">
+                <div class="comments">
+                    <div class="comment-count">
+                        <a>3 COMMENTS</a>
+                    </div>
+                    
+                    {% comment %} <div class='add-comment'>
+                        <a>ADD COMMENT</a>
+                    </div> {% endcomment %}
+                </div>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="post">
+            <div class="post-header">
+                <div class='title'><A>POST O KOBIETACH</A></div>
+                <div class='autor-date'>17 MAY 2021 / BY DAN DANIELOWSKI</div>
+
+            </div>
+            <div class="post-content">
+
+                <p>{% lorem 1 b random %} </p>
+                <button class="more-content"><a>CONTINUE</a></button>
+            </div>
+            <div class="post-footer">
+                <div class="comments">
+                    <div class="comment-count">
+                        <a>34 COMMENTS</a>
+                    </div>
+                    
+                    {% comment %} <div class='add-comment'>
+                        <a>ADD COMMENT</a>
+                    </div> {% endcomment %}
+                </div>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="home2">
+        <div class="about-us">
+            <div class="about-us-header">
+            </div>
+            <div class="about-us-content">
+         
+            </div>
+        </div>
+
+        <div class="about-us">
+            <div class="about-us-header">
+            </div>
+            <div class="about-us-content">
+        
+            </div>
+        </div>   
+
+    </div>
+</div>
+
+{% endblock content %}

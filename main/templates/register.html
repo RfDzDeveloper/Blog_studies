@@ -1,0 +1,137 @@
+{% extends 'core-login.html' %}
+{% block content %}
+
+
+<!-- MESSAGE-->
+
+<div id="message2">     
+    <h4>Password must have:</h4>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>uppercase</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+
+<div id="message3">
+<span id="closemessage3"><b>x</b></span>
+    <h4>Username must have:</h4>
+    <p>Minimum <b>6 characters</b></p>
+    <p>Maximum <b>25 characters</b></p>
+</div>
+
+<!-- END OF MESSAGE-->
+
+<div class="l-container">
+<div class="login-page">
+<div class="form">
+    
+    <form class="register-form" action="" method="POST">
+    
+    {% csrf_token %}
+    <div class="login-bar"><p>REGISTER PANEL</p></div>
+      <i class="fas fa-info-circle" id="more-info1"></i>
+      <input type="text" id="username" name="username" placeholder="Username" pattern="{6,25}" required/>
+      <input type="text" id="first_name" name="first_name" placeholder="First name" pattern="[\D]{3,25}"/>
+      <input type="text" id="last_name" name="last_name" placeholder="Last name" pattern="[\D]{2,30}"/>
+      <input type="email" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+       <i class="far fa-eye" id="togglePassword"></i>
+      <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+      <i class="far fa-eye" id="togglePassword1"></i>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+      <input type="hidden" name="user_id" value="{{ user.id }}">
+      <button>SIGN IN</button>
+    
+    </form>
+</div> 
+</div>      
+</div>
+
+<script>
+$('.message a').click(function(){
+$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+myInput.onfocus = function() {
+document.getElementById("message2").style.display = "block";
+}
+
+myInput.onblur = function() {
+document.getElementById("message2").style.display = "none";
+}
+
+myInput.onkeyup = function() {
+
+var lowerCaseLetters = /[a-z]/g;
+if(myInput.value.match(lowerCaseLetters)) {
+letter.classList.remove("invalid");
+letter.classList.add("valid");
+} else {
+letter.classList.remove("valid");
+letter.classList.add("invalid");
+}
+
+var upperCaseLetters = /[A-Z]/g;
+if(myInput.value.match(upperCaseLetters)) {
+capital.classList.remove("invalid");
+capital.classList.add("valid");
+} else {
+capital.classList.remove("valid");
+capital.classList.add("invalid");
+}
+
+var numbers = /[0-9]/g;
+if(myInput.value.match(numbers)) {
+number.classList.remove("invalid");
+number.classList.add("valid");
+} else {
+number.classList.remove("valid");
+number.classList.add("invalid");
+}
+
+if(myInput.value.length >= 8) {
+length.classList.remove("invalid");
+length.classList.add("valid");
+} else {
+length.classList.remove("valid");
+length.classList.add("invalid");
+}
+}
+
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
+const togglePassword1 = document.querySelector('#togglePassword1');
+const password1 = document.querySelector('#confirm_password');
+
+togglePassword.addEventListener('click', function (e) {
+const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+password.setAttribute('type', type);
+this.classList.toggle('far fa-eye');
+});
+
+togglePassword1.addEventListener('click', function (e) {
+const type = password1.getAttribute('type') === 'password' ? 'text' : 'password';
+password1.setAttribute('type', type);
+this.classList.toggle('far fa-eye');
+});
+
+document.getElementById("more-info1").addEventListener("click", function(){
+document.querySelector("#message3").style.display="grid";
+})
+
+setTimeout(function(){
+document.querySelector("#message3").style.display="none";
+},3000)
+
+document.getElementById("closemessage3").addEventListener("click", function(){
+document.querySelector("#message3").style.display="none";
+})
+
+</script>
+
+{% endblock content %}
