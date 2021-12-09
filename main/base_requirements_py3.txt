@@ -52,6 +52,5 @@ urllib3==1.*
 virtualenv==20.*
 weasyprint==53.*
 webencodings==0.*
-windows-curses==2.*
 xhtml2pdf==0.*
 zopfli==0.*

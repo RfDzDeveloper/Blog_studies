@@ -1,0 +1,2 @@
+docker build --tag blog_studies .
+docker run --publish 8080:8080 blog_studies

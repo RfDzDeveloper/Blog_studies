@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'qd5_pu$s_gafy^@+r39(l_!&zoby$j9_5qjn7^xgd0(k03_39&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -17,11 +17,13 @@ ALLOWED_HOSTS = []
 
 # SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''
-EMAIL_PORT = ''
+EMAIL_HOST = 
+EMAIL_PORT = 
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD = 
+
+SECRET_KEY = 'qd5_pu$s_gafy^@+r39(l_!&zoby$j9_5qjn7^xgd0(k03_39&'
 
 # Application definition
 
@@ -76,7 +78,10 @@ DATABASES = {
     }
 }
 
-
+ALLOWED_HOSTS = [
+    'gentleblogtest.azurewebsites.net',
+    '127.0.0.1'
+]
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
