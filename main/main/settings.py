@@ -17,13 +17,13 @@ ALLOWED_HOSTS = []
 
 # SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 
-EMAIL_PORT = 
+EMAIL_HOST = ''
+EMAIL_PORT = ''
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 
-EMAIL_HOST_PASSWORD = 
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
-SECRET_KEY = 'qd5_pu$s_gafy^@+r39(l_!&zoby$j9_5qjn7^xgd0(k03_39&'
+SECRET_KEY = ''
 
 # Application definition
 
@@ -79,7 +79,7 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    'gentleblogtest.azurewebsites.net',
+    'gentleblog.azurewebsites.net',
     '127.0.0.1'
 ]
 # Password validation
