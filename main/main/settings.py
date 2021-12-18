@@ -77,7 +77,7 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    'gentleblog.azurewebsites.net',
+    'gentle-blog.azurewebsites.net',
     '127.0.0.1'
 ]
 # Password validation
