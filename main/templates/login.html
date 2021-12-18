@@ -9,7 +9,7 @@
       <div class="form" id="login">
         <div class="login-bar"><div id="logo" class="logo"><p>LOGIN PANEL</p></div></div>
           
-        <form class="login-form" action="" method="POST"> <!-- LOGIN FORM-->
+        <form class="login-form" action="{% url 'login' %}" method="POST"> <!-- LOGIN FORM-->
           {% csrf_token %}   
           <input type="text" id="username" name="username" placeholder="Username" required/>
           <i class="far fa-eye" id="togglePassword"></i></input>

@@ -55,13 +55,14 @@ def login_view(request: HttpRequest):
             username: str = request.POST['username']
             password: str = request.POST['password']
             if username != " " and password != " ":
-                user = authenticate(username = username, password = password)
+                user = authenticate(
+                    username = username.capitalize(), password = password)
                 
                 if user != None:                        
                     login(request, user)                     
                     context: dict = {'message': 'Successful login!'}
                     messages.success(request, context['message'])
-                    return redirect('read_posts')            
+                    return redirect('my_home')            
                 else:
                     context: dict = {'message': 'Wrong login attempt.'}
                     messages.error(request, context['message'])
@@ -143,7 +144,7 @@ def add_comment(request: HttpRequest):
         DatabaseService().add_comment(request)               
     except Exception as ex:
         messages.error(request, ex)
-    return redirect('read_post', post_id=request.POST['post_id'])
+    return redirect('read_posts', post_id=request.POST['post_id'])
 
 @login_required(login_url='login')
 def edit_comment(request: HttpRequest):
@@ -151,7 +152,7 @@ def edit_comment(request: HttpRequest):
         DatabaseService().edit_comment(request)
     except Exception as ex:
         messages.error(request, ex)
-    return redirect('read_post', post_id=request.POST['post_id'])     
+    return redirect('read_posts', post_id=request.POST['post_id'])     
 
 def forgot_password(request: HttpRequest):
     if request.method == 'POST':
@@ -201,4 +202,4 @@ def add_ratings(request: HttpRequest):
         DatabaseService().add_rating(request.POST['post_id'], request.user, request.POST['rating'])
     except Exception as ex:
         messages.error(request, ex)
-    return redirect('read_post', post_id=request.POST['post_id'])
+    return redirect('read_posts', post_id=request.POST['post_id'])
