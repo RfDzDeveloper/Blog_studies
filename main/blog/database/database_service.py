@@ -22,7 +22,8 @@ class DatabaseService:
             'email': email.lower(),
             'last_name': last_name.capitalize(),
         }
-        result: bool = User.objects.filter(username=user_dictionary['username']).exists()
+        result: bool = User.objects.filter(
+            username=user_dictionary['username']).exists()
 
         if password == None or password == " ":
             raise ValueError("Password can't be empty!")
@@ -46,7 +47,7 @@ class DatabaseService:
         return user
     
     def _get_post_data(self, request: HttpRequest) -> Post:
-        post: Post = Post(text=request.POST['text'], title=request.POST['tile'],
+        post: Post = Post(text=request.POST['text'], title=request.POST['title'],
                           user=request.user)        
         
         if len(post.text) == 0 or post.text == '' or post.text == ' ':
