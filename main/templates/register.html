@@ -25,7 +25,7 @@
 <div class="login-page">
 <div class="form">
     
-    <form class="register-form" action="" method="POST">
+    <form class="register-form" action="{% url 'register'%} " method="POST">
     
     {% csrf_token %}
     <div class="login-bar"><p>REGISTER PANEL</p></div>
