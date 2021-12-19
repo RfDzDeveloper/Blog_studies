@@ -1,1 +1,29 @@
-<h1>Welcome</h1>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <!-- SCRIPTS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Gentle-blog</title>
+    </head>
+    <body>
+
+        <div class='container'>
+
+            <div class='welcome-div'>
+                {% comment %} <ul>
+                    <li><div class="navbar-logo"><a>write<span>NOW</span></a></div></li>
+                </ul> {% endcomment %}
+                    <ul>
+                        <li><button onclick="location.href='/blog/login/';">LOGIN</button></li>
+                        <li><button onclick="location.href='/blog/register/';">REGISTER</button></li>
+                    </ul>
+                
+            </div>
+
+        </div>
+
+    </body>
+</html>

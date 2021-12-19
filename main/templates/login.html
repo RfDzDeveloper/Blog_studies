@@ -17,7 +17,8 @@
           <div class="btn-sq">
           <button>Sign in</button>
           </div>
-          <p class="message">Forgot password? <a href=""> Reset password here</a></p>
+          <p class="message">Forgot password? <a href="{% url 'forgot_password' %}"> Reset password here</a></p>
+          <p class="message" id="r">Don't have an account? <a href="{% url 'register' %}"> Register now</a></p>
         </form>
       </div> 
     </div>    
