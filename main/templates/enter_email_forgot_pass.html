@@ -3,8 +3,8 @@
 
 <div class="l-container">
     <div class="login-page">
-      <div class="form">
-        <div class="login-bar-reset"><div id="logo" class="logo"><p>ENTER EMAIL</p></div></div>
+      <div class="form" id='reset-password'>
+        <div class="login-bar-reset"><p>ENTER EMAIL</p></div>
           <form class="reset-password-form" method="POST">
             {% csrf_token %}  
             <input type="email" class="input-email-reset" placeholder="Email address" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>

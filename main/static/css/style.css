@@ -763,6 +763,10 @@ ul#dropdownaccount button:hover {
     height: 160;
 }
 
+.l-container .form#reset-password {
+    height: 180;
+}
+
 .l-container #login {
     height: 240;
 }
@@ -983,8 +987,7 @@ h4 {
     color: #171C2B;
 }
 
-.login-bar,
-.login-bar-reset {
+.login-bar {
     background-color: #252525;
     width: 100%;
     height: 65;
@@ -998,10 +1001,30 @@ h4 {
     color: white;
 }
 
-.login-bar p,
-.login-bar-reset p {
+.login-bar-reset {
+    background-color: #252525;
+    width: 100%;
+    height: 65;
+    line-height: 3.1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin-bottom: 30;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: white;
+}
+
+.login-bar p {
     margin-right: 70;
     float: right;
+    font-size: 18px;
+    justify-content: center;
+    letter-spacing: 2;
+    margin-top: 5;
+}
+
+.login-bar-reset p {
     font-size: 18px;
     justify-content: center;
     letter-spacing: 2;
