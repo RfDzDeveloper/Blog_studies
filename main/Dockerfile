@@ -19,6 +19,8 @@ COPY . /app
 
 RUN chmod g+w /app
 RUN chmod g+w /app/db.sqlite3
+RUN chmod +w /app/static
+RUN chmod +wr /app/media
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
@@ -26,4 +28,4 @@ RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /
 USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "3", "main.wsgi:application"]
