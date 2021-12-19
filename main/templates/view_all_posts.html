@@ -1,4 +1,4 @@
-<head><title>writeNOW! | View all posts</title></head>
+<head><title>Gentle-blog | View all posts</title></head>
 {% extends 'core.html' %}
 
 {% block content %}
@@ -13,15 +13,17 @@
     {% for item in post_list%}
         <div class="post">
             
-            <div class="post-header">{{item.id}}
-                <div class='title'><A>{{item.post.title}}</A></div>
-                <div class='autor-date'>{{item.publish_date}} / BY {{item.user.username}}</div>
+            <div class="post-header">
+                <div class='title'><A>{{item.1}}</A></div>
+                <div class='autor-date'>{{item.2}} / BY {{item.user.username}}</div>
 
             </div>
             <div class="post-content">
 
-                <p>{{item.text}} </p>
-                <button class="more-content"><a href=''>CONTINUE</a></button>
+                <p> </p>
+
+                <button onclick="location.href='{% url 'read_posts' item.0 %}'" class="more-content"><a >CONTINUE</a></button>
+            
             </div>
             <div class="post-footer">
                 <div class="comments">

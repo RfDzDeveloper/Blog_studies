@@ -169,13 +169,13 @@ def forgot_password(request: HttpRequest):
             messages.error(request, ex) 
         return redirect('login')
     else:
-        return render(request, 'enter_email_forgot_pass.html')
+        return render(request, 'blog/enter_email_forgot_pass.html')
     
 def reset_password(request, token):
     try:
         email: str = DatabaseService().check_exists_token(token)
         context: dict = {'email': email}  
-        return render(request, 'change_password.html', context)
+        return render(request, 'blog/change_password.html', context)
     except Exception as ex:
         messages.error(request, ex)
         return redirect('login')  
@@ -191,10 +191,10 @@ def change_password(request):
     except Exception as ex:
         messages.error(request, ex)
         context: dict = {'email': request.POST['email']}
-        return render(request, 'change_password.html', context)
+        return render(request, 'blog/change_password.html', context)
 
 def success_reset_password(request: HttpRequest):
-    return render(request, 'success_reset_pass.html')
+    return render(request, 'blog/success_reset_pass.html')
 
 @login_required(login_url='login')
 def add_ratings(request: HttpRequest):
