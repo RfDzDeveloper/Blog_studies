@@ -17,7 +17,7 @@ ALLOWED_HOSTS = []
 
 # SMTP Configuration
 EMAIL_BACKEND = ''
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = ''
 EMAIL_PORT = ''
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = ''
