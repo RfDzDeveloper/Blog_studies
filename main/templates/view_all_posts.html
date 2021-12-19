@@ -1,9 +1,15 @@
+<head><title>writeNOW! | View all posts</title></head>
 {% extends 'core.html' %}
+
 {% block content %}
 
 <div class="container">
    <div class="view-posts">
-       VIEW ALL POSTS 
+       
+        <div class='view-all-posts-text'>
+            VIEW ALL POSTS
+        </diV>
+
     {% for item in post_list%}
         <div class="post">
             
@@ -15,7 +21,7 @@
             <div class="post-content">
 
                 <p>{{item.text}} </p>
-                <button class="more-content"><a>CONTINUE</a></button>
+                <button class="more-content"><a href=''>CONTINUE</a></button>
             </div>
             <div class="post-footer">
                 <div class="comments">

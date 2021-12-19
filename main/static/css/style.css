@@ -21,6 +21,11 @@ body {
     text-decoration: none;
 }
 
+a {
+    list-style: none;
+    color: white;
+}
+
 nav {
     width: 100%;
     height: 40;
@@ -83,7 +88,7 @@ nav {
     display: block;
 }
 
-.navbar ul li.posts:hover ul.dropdown {
+.navbar ul li:hover ul.dropdown {
     display: inline-block;
 }
 
@@ -93,9 +98,13 @@ nav {
     position: fixed;
     display: none;
     margin-top: 34px;
-    margin-left: -60;
+    margin-left: -70;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.123), 0 3px 3px 0 rgba(0, 0, 0, 0.13);
     color: black;
+}
+
+.navbar ul ul.dropdown#dropdownaccount {
+    margin-left: -85;
 }
 
 .navbar ul ul.dropdown li a {
@@ -165,7 +174,104 @@ nav {
 }
 
 .footer span {
-    color: goldenrod;
+    color: #daa520;
+}
+
+.container {
+    width: 100%;
+}
+
+.container .logout-page {
+    width: 500;
+    height: 300;
+    background-color: #ffffff;
+    display: block;
+    margin-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 0;
+    position: fixed;
+    display: flex;
+}
+
+.container .logout-page button {
+    width: 200;
+    height: 50;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border-radius: 2px;
+    margin-right: 20;
+    font-size: 20;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.container .welcome-div {
+    width: 1000;
+    height: 600;
+    background-image: url("/static/images/background-welcome.png");
+    background-color: #cccccc;
+    display: block;
+    margin-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.container .welcome-div ul {
+    width: 1000;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    padding-left: 285px;
+}
+
+.container .welcome-div ul li {
+    height: 50;
+    width: 200;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: 'Brush Script Mt', sans-serif;
+    margin-top: 430;
+    margin-right: 20;
+}
+
+.container .welcome-div ul li button {
+    width: 200;
+    height: 50;
+    background-color: rgba(0, 0, 0, 0);
+    border: 4px solid white;
+    color: white;
+    border-radius: 2px;
+    margin-right: 20;
+    font-size: 20;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.container .welcome-div ul li button:hover {
+    background-color: #daa520;
+}
+
+.welcome-logo a {
+    line-height: 1, 5;
+    font-size: 42px;
+    color: rgb(0, 0, 0);
+    font-family: 'Brush Script Mt', sans-serif;
+}
+
+ul#dropdownaccount button {
+    background: none;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    border: 0;
+    color: black;
+}
+
+ul#dropdownaccount button:hover {
+    color: white;
 }
 
 
@@ -380,8 +486,32 @@ nav {
     padding-left: 20%;
 }
 
+.container .view-all-posts-text,
+.container .read-posts-text {
+    width: 940;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    letter-spacing: 2;
+    height: 30;
+    margin-bottom: 15;
+    font-size: 17;
+    text-align: center;
+    padding-top: 10;
+    font-weight: bold;
+}
+
 
 /* END OF VIEW POSTS*/
+
+
+/* READ POSTS */
+
+.container .read-posts {
+    padding-left: 20%;
+}
+
+
+/* END OF READ POSTS */
 
 
 /* ADD POSTS */
@@ -624,6 +754,10 @@ nav {
     border-radius: 4px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.l-container .form#logout {
+    height: 160;
 }
 
 .l-container #login {
