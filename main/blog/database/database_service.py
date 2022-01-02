@@ -188,6 +188,8 @@ class DatabaseService:
         sum_value: int = 0
         for item in response:
             sum_value += item.ratings
-        average: float = sum_value/len(response)
+        average: float = 0.00
+        if len(response) != 0:            
+            average: float = sum_value/len(response)
         return average
         

@@ -39,7 +39,7 @@ def read_post(request: HttpRequest, post_id: int):
     try:
         context: dict = {'post': Post.objects.filter(id=post_id),
                          'comments': Comment.objects.filter(
-                             post__id=request.POST['post_id']).order_by('publish_date'),
+                             post__id=post_id).order_by('publish_date'),
                          'ratings': DatabaseService().get_post_ratings(post_id)}        
         return render(request, 'read_posts.html', context)
     except Exception as ex:
