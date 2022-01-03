@@ -15,7 +15,7 @@
             
             <div class="post-header">
                 <div class='title'><A>{{item.1}}</A></div>
-                <div class='autor-date'>{{item.2}} / BY {{item.user.username}}</div>
+                <div class='autor-date'>{{item.2}}</div>
 
             </div>
             <div class="post-content">
@@ -27,16 +27,17 @@
             </div>
             <div class="post-footer">
                 <div class="comments">
-                    <div class="comment-count">
+                    {% comment %} <div class="comment-count">
                         <a>3 COMMENTS</a>
-                    </div>
+                    </div> {% endcomment %}
                     
                     {% comment %} <div class='add-comment'>
                         <a>ADD COMMENT</a>
                     </div> {% endcomment %}
                 </div>
                 <div class="rate">
-                    <input type="radio" id="star5" name="rate" value="5" />
+                    <p>Rate: {{item.3}}</p>
+                    {% comment %} <input type="radio" id="star5" name="rate" value="5" />
                     <label for="star5" title="text">5 stars</label>
                     <input type="radio" id="star4" name="rate" value="4" />
                     <label for="star4" title="text">4 stars</label>
@@ -45,7 +46,7 @@
                     <input type="radio" id="star2" name="rate" value="2" />
                     <label for="star2" title="text">2 stars</label>
                     <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="text">1 star</label>
+                    <label for="star1" title="text">1 star</label> {% endcomment %}
                 </div>
 
             </div>
