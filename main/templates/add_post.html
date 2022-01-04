@@ -5,7 +5,7 @@
 <div class="container">
    <div class="add-posts">
        
-            <form method='post' action=''>
+            <form method='post' action='{% url "add_post" %}'>
                 {% csrf_token %}
                 <ul>
                     <li><i id='add-icon' class="fas fa-plus"></i>ADD NEW POST</li>
