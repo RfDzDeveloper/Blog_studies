@@ -664,6 +664,22 @@ textarea.post-edit-textarea {
     margin-top: -20;
 }
 
+#edit-post i {
+    font-size: 16;
+}
+
+i#trash {
+    font-size: 14;
+    margin-left: 3;
+    margin-top: -20;
+    cursor: pointer;
+    color: #6d6d6d;
+}
+
+i#trash:hover {
+    color: #c59b08;
+}
+
 #edit-post i,
 #edit-comment i {
     color: #6d6d6d;
@@ -673,6 +689,17 @@ textarea.post-edit-textarea {
 #edit-post i:hover,
 #edit-comment i:hover {
     color: #c59b08;
+}
+
+.post-header button {
+    background: none;
+    list-style: none;
+    border: 0;
+}
+
+.post-header form {
+    background: none;
+    border: 0;
 }
 
 .edit-post-content-div,
@@ -740,6 +767,41 @@ textarea.post-edit-textarea {
 .post-comment-edit button i {
     color: white;
     font-size: large;
+}
+
+.post-header span {
+    font-size: 40;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+.post-header span#click-post {
+    font-size: 20;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+p#no-posts i {
+    margin-right: 15;
+}
+
+.container .post-header#empty-post {
+    height: 250px;
+}
+
+p#no-posts i#ft {
+    z-index: 1;
+    font-size: 60;
+    color: #ffffff;
+    padding-top: 10;
+    padding-left: 10;
+    position: fixed;
+}
+
+p#no-posts i#qr {
+    z-index: 2;
+    font-size: 110;
+    color: #333333;
 }
 
 
@@ -880,7 +942,7 @@ textarea.post-edit-textarea {
 
 .alert {
     list-style: none;
-    background-color: #F2B634;
+    background-color: #c5c5c5;
     color: rgb(0, 0, 0);
     padding: 15px;
     text-align: center;

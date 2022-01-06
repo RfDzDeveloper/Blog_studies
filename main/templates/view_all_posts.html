@@ -11,12 +11,12 @@
         </diV>
 
     {% for item in post_list%}
+    {% if item%}
         <div class="post">
             
             <div class="post-header">
                 <div class='title'><A>{{item.1}} <i class="fas fa-star"></i> {{item.3}}</A></div>
                 <div class='autor-date'>{{item.2}}</div>
-
             </div>
             <div class="post-content">
 
@@ -28,6 +28,15 @@
             <div class="post-footer">
                 <div class="comments">
                 </div>
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <div class="post">
+            <div class="post-header" id='empty-post'>
+                <p id='no-posts'><i id="ft" class="fas fa-times"></i><i id="qr" class="fas fa-sticky-note"></i></p>
+                <span>You don't have any posts yet.</span></br>
+                <span id='click-post'>Click POSTS in navigation bar and choose ADD.</span>
             </div>
         </div>
 {% endfor %}
