@@ -4,46 +4,40 @@
 <div class="container">
     <div class="home">
         {% for item in post_list%}
+        {% if item %}
         <div class="post">
             
             <div class="post-header">
                 <div class='title'><A>{{item.1}}</A></div>
-                <div class='autor-date'>{{item.2}} / BY {{item.user.username}}</div>
+                <div class='autor-date'>{{item.2}}</div>
 
             </div>
             <div class="post-content">
                 <p></p>
                 
-                <button onclick="location.href='{% url 'read_posts' item.0 %}'" class="more-content"><a >CONTINUE</a></button>
-
+                <form method="post" action="{% url 'read_posts' item.0 %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{item.0}}">
+                    
+                    <button class="more-content"><a >READ</a></button>
+                </form>
             </div>
             <div class="post-footer">
                 <div class="comments">
-                    <div class="comment-count">
-                        <a>3 COMMENTS</a>
-                    </div>
-                    
-                    {% comment %} <div class='add-comment'>
-                        <a>ADD COMMENT</a>
-                    </div> {% endcomment %}
-                </div>
-                <div class="rate">
-                    
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="text">1 star</label>
-                    
+                   
                 </div>
 
             </div>
         </div>
+        {% endif %}
+    {% empty %}
+    <div class="post">
+        <div class="post-header" id='empty-post'>
+            <p id='no-posts'><i id="ft" class="fas fa-times"></i><i id="qr" class="fas fa-sticky-note"></i></p>
+            <span>You don't have any posts yet.</span></br>
+            <span id='click-post'>Click POSTS in navigation bar and choose ADD.</span>
+        </div>
+    </div>
 {% endfor %}
 
     </div>

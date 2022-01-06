@@ -32,6 +32,7 @@ nav {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.123), 0 3px 3px 0 rgba(0, 0, 0, 0.13);
     padding-bottom: 10;
     margin-bottom: 2%;
+    z-index: 12;
 }
 
 .navbar {
@@ -48,6 +49,7 @@ nav {
     width: 30%;
     height: 40;
     text-align: center;
+    z-index: 12;
 }
 
 .navbar-logo a {
@@ -267,6 +269,7 @@ ul#dropdownaccount button {
     list-style: none;
     border: 0;
     color: black;
+    cursor: pointer;
 }
 
 ul#dropdownaccount button:hover {
@@ -293,7 +296,7 @@ ul#dropdownaccount button:hover {
     width: 900;
     min-height: 330;
     background-color: white;
-    box-shadow: 0px 1px 2px 1px #eee;
+    box-shadow: 0px 1px 2px 1px #e0e0e0;
     display: block;
     padding: 20;
     margin-bottom: 15;
@@ -317,6 +320,7 @@ ul#dropdownaccount button:hover {
     font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-bottom: 20;
 }
 
 .container .post-header .title {
@@ -330,6 +334,16 @@ ul#dropdownaccount button:hover {
     margin-bottom: 5px;
     text-transform: uppercase;
     width: 100%;
+}
+
+.container .home .post-content,
+.container .view-posts .post-content {
+    min-height: 85;
+}
+
+.container .home .post,
+.view-posts .post {
+    min-height: 240px;
 }
 
 .container .post-content {
@@ -383,7 +397,7 @@ ul#dropdownaccount button:hover {
 .container .post-footer .comments {
     color: #6b6b6b;
     font-size: 11px;
-    width: 80%;
+    width: 705;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
@@ -392,9 +406,113 @@ ul#dropdownaccount button:hover {
     display: flex;
 }
 
-.container .post-footer .comments .add-comment {
+.comment {
+    width: 880;
+    min-height: 50;
+    max-height: max-content;
+    background-color: rgb(247, 247, 247);
+    display: block;
+    padding-left: 10;
+    padding-right: 10;
+    box-shadow: 0px 1px 2px 1px rgb(233, 233, 233);
+    padding-bottom: 1;
+    display: grid;
+    margin-bottom: 10;
+}
+
+.comment ul {
+    width: 880;
+    min-height: 50;
+    max-height: max-content;
+    background-color: none;
+    align-items: center;
+    padding: 0;
+}
+
+.comment ul li {
+    width: 870;
+    background-color: none;
+    margin-bottom: 2;
+    margin-top: 0;
+    padding: 5;
+}
+
+.comment-date-user {
+    border-bottom: 1px solid black;
+    height: 15;
+    font-size: 13;
+    letter-spacing: 1;
+    text-align: left;
+}
+
+.comment-date-user span {
     float: right;
-    margin-left: 430;
+    cursor: pointer;
+}
+
+.comment-date-user span i {
+    margin-right: 2;
+}
+
+.comment-content {
+    min-height: 20;
+    max-height: max-content;
+    font-size: 15;
+    letter-spacing: 1;
+}
+
+.container .post-footer .comments .add-comment {
+    float: left;
+    display: block;
+}
+
+.container .post-footer .comments .add-comment-input {
+    width: 700;
+    background-color: none;
+    height: 40;
+    display: NONE;
+    margin-bottom: 15;
+}
+
+.add-comment-input button {
+    text-transform: uppercase;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 55;
+    height: 40;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.add-comment-input button:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+.container .post-footer .comments .add-comment-input textarea {
+    height: 40;
+    width: 500;
+    resize: none;
+    background-color: none;
+    padding: 5;
+    float: left;
+    margin-right: 10;
 }
 
 .container .post-footer .comments a {
@@ -411,47 +529,84 @@ ul#dropdownaccount button:hover {
 .container .post .rate {
     height: 46px;
     padding: 0 10px;
-    margin-top: -10;
+    margin-top: -2;
 }
 
-.container .post .rate:not(:checked)>input {
+.container .post .rate form p {
+    margin-right: 10;
+}
+
+.container .post .rate form:not(:checked)>input {
     position: absolute;
     top: -9999px;
 }
 
-.container .post .rate:not(:checked)>label {
+.container .post .rate form:not(:checked)>label {
     float: right;
     width: 1em;
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 35px;
     color: #ccc;
 }
 
-.container .post .rate:not(:checked)>label:before {
+.container .post .rate form:not(:checked)>label:before {
     content: '★ ';
 }
 
-.container .post .rate>input:checked~label {
+.container .post .rate form>input:checked~label {
     color: #ffc700;
 }
 
-.container .post .rate:not(:checked)>label:hover,
-.container .post .rate:not(:checked)>label:hover~label {
+.container .post .rate form:not(:checked)>label:hover,
+.container .post .rate form:not(:checked)>label:hover~label {
     color: #deb217;
 }
 
-.container .post .rate>input:checked+label:hover,
-.container .post .rate>input:checked+label:hover~label,
-.container .post .rate>input:checked~label:hover,
-.container .post .rate>input:checked~label:hover~label,
-.container .post .rate>label:hover~input:checked~label {
+.container .post .rate form>input:checked+label:hover,
+.container .post .rate form>input:checked+label:hover~label,
+.container .post .rate form>input:checked~label:hover,
+.container .post .rate form>input:checked~label:hover~label,
+.container .post .rate form>label:hover~input:checked~label {
     color: #c59b08;
 }
 
 
 /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+
+button#rate {
+    text-transform: uppercase;
+    display: none;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 60;
+    margin-top: 4;
+    height: 40;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+button#rate:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
 
 
 /* end of rating */
@@ -477,6 +632,176 @@ ul#dropdownaccount button:hover {
     width: 100%;
     height: 40;
     background-color: rgb(39, 39, 39);
+}
+
+.edit-comment-content,
+.edit-post-content {
+    position: fixed;
+    display: none;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+}
+
+textarea.post-edit-textarea,
+textarea.comment-edit-textarea {
+    width: 740;
+    height: 45;
+    resize: none;
+    padding: 5;
+}
+
+textarea.post-edit-textarea {
+    height: 100;
+}
+
+#edit-post {
+    float: right;
+    position: relative;
+    margin-top: -20;
+}
+
+#edit-post i {
+    font-size: 16;
+}
+
+i#trash {
+    font-size: 14;
+    margin-left: 3;
+    margin-top: -20;
+    cursor: pointer;
+    color: #6d6d6d;
+}
+
+i#trash:hover {
+    color: #c59b08;
+}
+
+#edit-post i,
+#edit-comment i {
+    color: #6d6d6d;
+    cursor: pointer;
+}
+
+#edit-post i:hover,
+#edit-comment i:hover {
+    color: #c59b08;
+}
+
+.post-header button {
+    background: none;
+    list-style: none;
+    border: 0;
+}
+
+.post-header form {
+    background: none;
+    border: 0;
+}
+
+.edit-post-content-div,
+.edit-comment-content-div {
+    background-color: white;
+    margin-left: 370px;
+    margin-top: 180px;
+    width: 800;
+    height: 140px;
+    box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+    padding: 20;
+    text-align: center;
+    color: #171C2B;
+}
+
+.edit-post-content-div {
+    height: 190px;
+}
+
+.edit-post-content-div span,
+.edit-comment-content-div span {
+    cursor: pointer;
+    font-size: large;
+    float: right;
+}
+
+.post-comment-edit button,
+.post-edit button {
+    text-transform: uppercase;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 45;
+    height: 45;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.post-edit button {
+    height: 100;
+}
+
+.post-edit button:hover,
+.post-comment-edit button:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+.post-content form button i,
+.post-comment-edit button i {
+    color: white;
+    font-size: large;
+}
+
+.post-header span {
+    font-size: 40;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+.post-header span#click-post {
+    font-size: 20;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+p#no-posts i {
+    margin-right: 15;
+}
+
+.container .post-header#empty-post {
+    height: 250px;
+}
+
+p#no-posts i#ft {
+    z-index: 1;
+    font-size: 60;
+    color: #ffffff;
+    padding-top: 10;
+    padding-left: 10;
+    position: fixed;
+}
+
+p#no-posts i#qr {
+    z-index: 2;
+    font-size: 110;
+    color: #333333;
 }
 
 
@@ -523,7 +848,7 @@ ul#dropdownaccount button:hover {
     width: 900;
     min-height: 330;
     background-color: white;
-    box-shadow: 0px 1px 2px 1px #eee;
+    box-shadow: 0px 1px 2px 1px #e0e0e0;
     display: block;
     margin-left: 20%;
     padding: 30;
@@ -571,6 +896,7 @@ ul#dropdownaccount button:hover {
     height: 180;
     border: 0;
     background-color: #eee;
+    resize: none;
     padding: 10;
     font-size: 16;
     margin-bottom: 10;
@@ -616,7 +942,7 @@ ul#dropdownaccount button:hover {
 
 .alert {
     list-style: none;
-    background-color: #F2B634;
+    background-color: #c5c5c5;
     color: rgb(0, 0, 0);
     padding: 15px;
     text-align: center;
@@ -630,6 +956,7 @@ ul#dropdownaccount button:hover {
     margin-top: 10px;
     border-radius: 4px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    z-index: 15;
 }
 
 #message2 {
