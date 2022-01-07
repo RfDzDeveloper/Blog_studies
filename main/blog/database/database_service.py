@@ -57,7 +57,7 @@ class DatabaseService:
             raise ValueError("Title can't be empty!")
         
         text_len: int = len(post.text)
-        if text_len > 1500:
+        if text_len > 5000:
             raise ValueError(
                 f"Post can't contains more then 1500 characters. \nNow it's: {text_len}")
             
@@ -123,7 +123,7 @@ class DatabaseService:
     def add_comment(self, request: HttpRequest) -> Comment:
         comment: Comment = Comment(text=self._get_comment_data(request),
                                    user=request.user,
-                                   post=request.POST['post_id'])
+                                   post=Post.objects.get(id=int(request.POST['post_id'])))
         comment.save()
         return comment
     
@@ -131,8 +131,8 @@ class DatabaseService:
         response: bool = Post.objects.filter(id=request.POST['post_id']).exists()
         if not response:
             raise Post.DoesNotExist(f"You can't add comment to post which doesn' exists")
-        post: Post = Post.objects.filter(id=request.POST['post_id'])[0]
-        comment: Comment = Comment(text=self._get_comment_data(),
+        post: Post = Post.objects.filter(id=int(request.POST['post_id']))[0]
+        comment: Comment = Comment(text=self._get_comment_data(request),
                                    user=request.user,
                                    post=post)
         response = Comment.objects.filter(id=request.POST['post_id']).exists()
@@ -191,5 +191,8 @@ class DatabaseService:
         average: float = 0.00
         if len(response) != 0:            
             average: float = sum_value/len(response)
+            post: Post = Post.objects.get(id=post_id)
+            post.post_rating = average
+            post.save()
         return average
         
