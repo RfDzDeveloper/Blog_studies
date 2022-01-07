@@ -1,10 +1,27 @@
-version: '3.4'
+version: '3.7'
 
 services:
   main:
     image: bloggapp.azurecr.io/gentle-blog:latest
+    container_name: web_part
+    volumes:
+      - static:/static
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 8080:8080
+  nginx:
+    container_name: server_part
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - main
+
+volumes:
+  static:
