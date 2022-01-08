@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 <<<<<<< HEAD
-SECRET_KEY = 'qd5_pu&s_gafy^@+r39(l_!&zoby$j9_5qjn7^xgd0(k039&'
+SECRET_KEY = ''
 =======
 # SECRET_KEY = ''
 >>>>>>> 7d3322c8583dab03350ddb4f75672a491e5689e4
