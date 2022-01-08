@@ -655,6 +655,15 @@ textarea.comment-edit-textarea {
     padding: 5;
 }
 
+.input-title-edit {
+    width: 740;
+    height: 45;
+    padding: 5;
+    float: left;
+    margin-bottom: 10;
+    margin-left: 8;
+}
+
 textarea.post-edit-textarea {
     height: 100;
 }
@@ -682,7 +691,7 @@ i#trash:hover {
 }
 
 #edit-post i,
-#edit-comment i {
+#edit-commentt i {
     color: #6d6d6d;
     cursor: pointer;
 }
@@ -702,7 +711,7 @@ i#trash:hover {
 }
 
 #edit-post i:hover,
-#edit-comment i:hover {
+#edit-commentt i:hover {
     color: #c59b08;
 }
 
@@ -731,7 +740,7 @@ i#trash:hover {
 }
 
 .edit-post-content-div {
-    height: 190px;
+    height: 230px;
 }
 
 .edit-post-content-div span,
@@ -765,7 +774,8 @@ i#trash:hover {
 }
 
 .post-edit button {
-    height: 100;
+    height: 155px;
+    margin-top: -55px;
 }
 
 .post-edit button:hover,
