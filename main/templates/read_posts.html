@@ -71,7 +71,7 @@
              </div>
             
             {% for comment in comments %}
-            {% if comment %}
+            {% if comment.post.id == item.id %}
             <div class='comment' value="{{comment.id}}">
                 <ul>
                     <li class="comment-date-user">{{comment.publish_date}} / {{comment.user}}<span id="edit-commentt"><i class="fas fa-edit"></i></span></li>
