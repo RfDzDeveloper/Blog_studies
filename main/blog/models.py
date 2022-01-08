@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     id: int = models.AutoField(primary_key=True)
     publish_date: models.DateField = models.DateField(auto_now=True, db_column="PublishDate")
-    text: str = models.CharField(max_length=1500, db_column="Text")
+    text: str = models.CharField(max_length=5000, db_column="Text")
     post_rating: float = models.FloatField(db_column="PostRating", null=True)    
     title: str = models.CharField(max_length=500, db_column="Title")
     user: models.ForeignKey = models.ForeignKey(User, db_column='User', on_delete=models.CASCADE)
