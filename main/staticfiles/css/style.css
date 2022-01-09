@@ -1,0 +1,1370 @@
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+* {
+    box-sizing: revert;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+nav {
+    width: 100%;
+    height: 40;
+    background: rgb(19, 19, 19);
+    background: linear-gradient(263deg, rgba(19, 19, 19, 1) 0%, rgba(41, 41, 41, 1) 34%, rgba(22, 22, 22, 1) 92%);
+    top: 0;
+    display: flex;
+    position: sticky;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.123), 0 3px 3px 0 rgba(0, 0, 0, 0.13);
+    padding-bottom: 10;
+    margin-bottom: 2%;
+    z-index: 12;
+}
+
+.navbar {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 70%;
+    height: 40;
+    float: right;
+    z-index: 12;
+}
+
+.navbar-logo {
+    float: left;
+    width: 30%;
+    height: 40;
+    text-align: center;
+    z-index: 12;
+}
+
+.navbar-logo a {
+    line-height: 2;
+    font-size: 28;
+    color: rgb(255, 255, 255);
+    font-family: 'Brush Script Mt', sans-serif;
+}
+
+.navbar-logo span {
+    color: goldenrod;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar ul {
+    display: flex;
+    height: 40;
+    padding: 0;
+    width: auto;
+    float: right;
+    margin-right: 80;
+}
+
+.navbar ul li {
+    position: relative;
+    width: 100;
+    height: 40;
+    color: rgb(255, 255, 255);
+    list-style: none;
+    margin-right: 20;
+    text-align: center;
+    font-size: 14px;
+    display: block;
+}
+
+.navbar ul li:hover ul.dropdown {
+    display: inline-block;
+}
+
+.navbar ul ul.dropdown {
+    width: 90;
+    height: auto;
+    position: fixed;
+    display: none;
+    margin-top: 34px;
+    margin-left: -70;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.123), 0 3px 3px 0 rgba(0, 0, 0, 0.13);
+    color: black;
+}
+
+.navbar ul ul.dropdown#dropdownaccount {
+    margin-left: -85;
+}
+
+.navbar ul ul.dropdown li a {
+    color: black;
+}
+
+.navbar ul ul.dropdown li {
+    width: 80;
+    height: 30;
+    background-color: rgb(248, 248, 248);
+    text-align: center;
+    align-items: center;
+    padding: 5;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    line-height: 2.1;
+}
+
+.navbar ul ul.dropdown li:hover {
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+    background-color: rgb(41, 41, 41);
+}
+
+.navbar ul ul.dropdown li:hover a {
+    color: rgb(255, 255, 255);
+}
+
+.navbar ul li {
+    -webkit-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -ms-transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+    cursor: pointer;
+}
+
+.navbar ul li:hover {
+    -webkit-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -ms-transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+    color: rgb(128, 128, 128);
+}
+
+.footer {
+    padding: 5;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    background: rgb(19, 19, 19);
+    background: linear-gradient(263deg, rgba(19, 19, 19, 1) 0%, rgba(41, 41, 41, 1) 34%, rgba(22, 22, 22, 1) 92%);
+    color: white;
+    margin-top: 20;
+    bottom: 0;
+    position: fixed;
+    font-size: small;
+    line-height: 1.5;
+}
+
+.footer span {
+    color: #daa520;
+}
+
+.container {
+    width: 100%;
+}
+
+.container .logout-page {
+    width: 500;
+    height: 300;
+    background-color: #ffffff;
+    display: block;
+    margin-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 0;
+    position: fixed;
+    display: flex;
+}
+
+.container .logout-page button {
+    width: 200;
+    height: 50;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border-radius: 2px;
+    margin-right: 20;
+    font-size: 20;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.container .welcome-div {
+    width: 1000;
+    height: 600;
+    background-image: url("/static/images/background-welcome.png");
+    background-color: #cccccc;
+    display: block;
+    margin-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.container .welcome-div ul {
+    width: 1000;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    padding-left: 285px;
+}
+
+.container .welcome-div ul li {
+    height: 50;
+    width: 200;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: 'Brush Script Mt', sans-serif;
+    margin-top: 430;
+    margin-right: 20;
+}
+
+.container .welcome-div ul li button {
+    width: 200;
+    height: 50;
+    background-color: rgba(0, 0, 0, 0);
+    border: 4px solid white;
+    color: white;
+    border-radius: 2px;
+    margin-right: 20;
+    font-size: 20;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.container .welcome-div ul li button:hover {
+    background-color: #daa520;
+}
+
+.welcome-logo a {
+    line-height: 1, 5;
+    font-size: 42px;
+    color: rgb(0, 0, 0);
+    font-family: 'Brush Script Mt', sans-serif;
+}
+
+ul#dropdownaccount button {
+    background: none;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    border: 0;
+    color: black;
+    cursor: pointer;
+}
+
+ul#dropdownaccount button:hover {
+    color: white;
+}
+
+
+/* HOME POSTS */
+
+.container {
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+.home {
+    padding-left: 20%;
+}
+
+.title a {
+    color: black;
+}
+
+.container .post {
+    width: 900;
+    min-height: 330;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px #e0e0e0;
+    display: block;
+    padding: 20;
+    margin-bottom: 15;
+}
+
+.container .post-header {
+    width: 100%;
+    min-height: 70;
+    max-height: 100%;
+    background-color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 15;
+}
+
+.container .post-header .autor-date {
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    color: #6b6b6b;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20;
+}
+
+.container .post-header .title {
+    color: #000000;
+    font-size: 26;
+    position: relative;
+    display: block;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.container .home .post-content,
+.container .view-posts .post-content {
+    min-height: 85;
+}
+
+.container .home .post,
+.view-posts .post {
+    min-height: 240px;
+}
+
+.container .post-content {
+    width: 100%;
+    min-height: 150;
+    max-height: 100%;
+    background-color: rgb(255, 255, 255);
+    text-align: justify;
+    padding: 0 0px 8px;
+    border-bottom: 1px solid rgb(170, 170, 170);
+    border-top: 1px solid rgb(170, 170, 170);
+}
+
+.container .post-content button.more-content {
+    width: 110;
+    height: 40;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    text-align: center;
+    padding: 10;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 13;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left: 42%;
+    position: inherit;
+    list-style: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.container .post-content button.more-content:hover {
+    background-color: goldenrod;
+}
+
+.container .post-content p {
+    margin-bottom: 10;
+}
+
+.container .post-footer {
+    width: 100%;
+    min-height: 50;
+    max-height: 100%;
+    background-color: rgb(255, 255, 255);
+    padding-top: 10;
+    display: flex;
+}
+
+.container .post-footer .comments {
+    color: #6b6b6b;
+    font-size: 11px;
+    width: 705;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 24px;
+    padding-top: 4px;
+    display: flex;
+}
+
+.comment {
+    width: 880;
+    min-height: 50;
+    max-height: max-content;
+    background-color: rgb(247, 247, 247);
+    display: block;
+    padding-left: 10;
+    padding-right: 10;
+    box-shadow: 0px 1px 2px 1px rgb(233, 233, 233);
+    padding-bottom: 1;
+    display: grid;
+    margin-bottom: 10;
+}
+
+.comment ul {
+    width: 880;
+    min-height: 50;
+    max-height: max-content;
+    background-color: none;
+    align-items: center;
+    padding: 0;
+}
+
+.comment ul li {
+    width: 870;
+    background-color: none;
+    margin-bottom: 2;
+    margin-top: 0;
+    padding: 5;
+}
+
+.comment-date-user {
+    border-bottom: 1px solid black;
+    height: 15;
+    font-size: 13;
+    letter-spacing: 1;
+    text-align: left;
+}
+
+.comment-date-user span {
+    float: right;
+    cursor: pointer;
+}
+
+.comment-date-user span i {
+    margin-right: 2;
+}
+
+.comment-content {
+    min-height: 20;
+    max-height: max-content;
+    font-size: 15;
+    letter-spacing: 1;
+}
+
+.container .post-footer .comments .add-comment {
+    float: left;
+    display: block;
+}
+
+.container .post-footer .comments .add-comment-input {
+    width: 700;
+    background-color: none;
+    height: 40;
+    display: NONE;
+    margin-bottom: 15;
+}
+
+.add-comment-input button {
+    text-transform: uppercase;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 55;
+    height: 40;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.add-comment-input button:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+.container .post-footer .comments .add-comment-input textarea {
+    height: 40;
+    width: 500;
+    resize: none;
+    background-color: none;
+    padding: 5;
+    float: left;
+    margin-right: 10;
+}
+
+.container .post-footer .comments a {
+    cursor: pointer;
+}
+
+.container .post-footer .comments a:hover {
+    color: goldenrod;
+}
+
+
+/* rating */
+
+.container .post .rate {
+    height: 46px;
+    padding: 0 10px;
+    margin-top: -2;
+}
+
+.container .post .rate form p {
+    margin-right: 10;
+}
+
+.container .post .rate form:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.container .post .rate form:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 35px;
+    color: #ccc;
+}
+
+.container .post .rate form:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.container .post .rate form>input:checked~label {
+    color: #ffc700;
+}
+
+.container .post .rate form:not(:checked)>label:hover,
+.container .post .rate form:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.container .post .rate form>input:checked+label:hover,
+.container .post .rate form>input:checked+label:hover~label,
+.container .post .rate form>input:checked~label:hover,
+.container .post .rate form>input:checked~label:hover~label,
+.container .post .rate form>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+
+button#rate {
+    text-transform: uppercase;
+    display: none;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 60;
+    margin-top: 4;
+    height: 40;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+button#rate:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+
+/* end of rating */
+
+
+/* .home2 {
+    width: 400;
+    height: 100%;
+    display: block;
+    margin-left: 4%;
+}
+
+.home2 .about-us {
+    width: 100%;
+    height: 300;
+    display: block;
+    margin-bottom: 15;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px #eee;
+} */
+
+.home2 .about-us .about-us-header {
+    width: 100%;
+    height: 40;
+    background-color: rgb(39, 39, 39);
+}
+
+.edit-comment-content,
+.edit-post-content {
+    position: fixed;
+    display: none;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+}
+
+textarea.post-edit-textarea,
+textarea.comment-edit-textarea {
+    width: 740;
+    height: 45;
+    resize: none;
+    padding: 5;
+}
+
+textarea.post-edit-textarea {
+    height: 100;
+}
+
+#edit-post {
+    float: right;
+    position: relative;
+    margin-top: -20;
+}
+
+#edit-post i {
+    font-size: 16;
+}
+
+i#trash {
+    font-size: 14;
+    margin-left: 3;
+    margin-top: -20;
+    cursor: pointer;
+    color: #6d6d6d;
+}
+
+i#trash:hover {
+    color: #c59b08;
+}
+
+#edit-post i,
+#edit-comment i {
+    color: #6d6d6d;
+    cursor: pointer;
+}
+
+#edit-post i:hover,
+#edit-comment i:hover {
+    color: #c59b08;
+}
+
+.post-header button {
+    background: none;
+    list-style: none;
+    border: 0;
+}
+
+.post-header form {
+    background: none;
+    border: 0;
+}
+
+.edit-post-content-div,
+.edit-comment-content-div {
+    background-color: white;
+    margin-left: 370px;
+    margin-top: 180px;
+    width: 800;
+    height: 140px;
+    box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+    padding: 20;
+    text-align: center;
+    color: #171C2B;
+}
+
+.edit-post-content-div {
+    height: 190px;
+}
+
+.edit-post-content-div span,
+.edit-comment-content-div span {
+    cursor: pointer;
+    font-size: large;
+    float: right;
+}
+
+.post-comment-edit button,
+.post-edit button {
+    text-transform: uppercase;
+    float: right;
+    outline: 0;
+    background-color: #252525;
+    width: 45;
+    height: 45;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.post-edit button {
+    height: 100;
+}
+
+.post-edit button:hover,
+.post-comment-edit button:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+.post-content form button i,
+.post-comment-edit button i {
+    color: white;
+    font-size: large;
+}
+
+.post-header span {
+    font-size: 40;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+.post-header span#click-post {
+    font-size: 20;
+    letter-spacing: 2;
+    color: #333333;
+}
+
+p#no-posts i {
+    margin-right: 15;
+}
+
+.container .post-header#empty-post {
+    height: 250px;
+}
+
+p#no-posts i#ft {
+    z-index: 1;
+    font-size: 60;
+    color: #ffffff;
+    padding-top: 10;
+    padding-left: 10;
+    position: fixed;
+}
+
+p#no-posts i#qr {
+    z-index: 2;
+    font-size: 110;
+    color: #333333;
+}
+
+
+/* END OF HOME POSTS*/
+
+
+/* VIEW POSTS */
+
+.container .view-posts {
+    padding-left: 20%;
+}
+
+.container .view-all-posts-text,
+.container .read-posts-text {
+    width: 940;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    letter-spacing: 2;
+    height: 30;
+    margin-bottom: 15;
+    font-size: 17;
+    text-align: center;
+    padding-top: 10;
+    font-weight: bold;
+}
+
+
+/* END OF VIEW POSTS*/
+
+
+/* READ POSTS */
+
+.container .read-posts {
+    padding-left: 20%;
+}
+
+
+/* END OF READ POSTS */
+
+
+/* ADD POSTS */
+
+.container .add-posts {
+    width: 900;
+    min-height: 330;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px #e0e0e0;
+    display: block;
+    margin-left: 20%;
+    padding: 30;
+}
+
+.container .add-posts ul {
+    width: 100%;
+}
+
+.container .add-posts ul li {
+    width: 100%;
+    border: 0;
+    height: 30;
+    padding-top: 10;
+    font-size: 18;
+    text-align: center;
+    margin-left: -40;
+    color: white;
+    letter-spacing: 2;
+    background-color: #252525;
+}
+
+.container .add-posts ul li i#add-icon {
+    font-size: large;
+    color: white;
+    margin-right: 10;
+}
+
+.container .add-posts form {
+    width: 100%;
+}
+
+.container .add-posts form input {
+    width: 100%;
+    height: 40;
+    border: 0;
+    background-color: #eee;
+    padding: 10;
+    font-size: 16;
+    margin-bottom: 10;
+}
+
+.container .add-posts form textarea {
+    width: 100%;
+    height: 180;
+    border: 0;
+    background-color: #eee;
+    resize: none;
+    padding: 10;
+    font-size: 16;
+    margin-bottom: 10;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container .add-posts button {
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #252525;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    margin-left: 350;
+    margin-top: 10;
+    cursor: pointer;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.container .add-posts button:hover {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+
+/* END OF ADD POSTS*/
+
+
+/* ALERTS */
+
+.alert {
+    list-style: none;
+    background-color: #c5c5c5;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    height: auto;
+    top: 0;
+    left: 0;
+    align-items: center;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    z-index: 15;
+}
+
+#message2 {
+    list-style: none;
+    background-color: #ffffff;
+    color: #171C2B;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    height: auto;
+    top: 0;
+    right: 0;
+    align-items: center;
+    position: absolute;
+    display: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#message3 {
+    color: #171C2B;
+    list-style: none;
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    height: auto;
+    top: 0;
+    left: 0;
+    align-items: center;
+    position: absolute;
+    display: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#message3 p {
+    margin-bottom: 5;
+}
+
+#message3 h4 {
+    margin-top: 5;
+}
+
+#closemessage3 {
+    cursor: pointer;
+    margin-left: 10;
+    margin-top: 10;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    background-color: #171C2B;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    padding: 2 2;
+}
+
+#message4 {
+    color: #171C2B;
+    list-style: none;
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    height: auto;
+    top: 0;
+    left: 0;
+    align-items: center;
+    position: absolute;
+    display: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#message4 h4 {
+    margin-top: 5;
+    color: #171C2B;
+}
+
+#closemessage4 {
+    cursor: pointer;
+    margin-left: 10;
+    margin-top: 10;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    background-color: #171C2B;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    padding: 2 2;
+}
+
+
+/* END OF ALERTS */
+
+.login-form {
+    margin-top: 50;
+}
+
+.l-container .login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.l-container .form {
+    position: relative;
+    height: 430;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.l-container .form#logout {
+    height: 160;
+}
+
+.l-container .form#reset-password {
+    height: 180;
+}
+
+.l-container #login {
+    height: 240;
+}
+
+.l-container .form .login-bar {
+    width: 330px;
+    height: 30;
+    margin-bottom: 30;
+}
+
+.l-container .form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.l-container .form input#username {
+    margin-top: 40;
+}
+
+.l-container #login input#username {
+    margin-top: 0;
+}
+
+.l-container .form input#apartment_number {
+    outline: 0;
+    background: #f2f2f2;
+    width: 47%;
+    border: 0;
+    margin: 0 0 15;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    float: right;
+    display: flex;
+    right: 0;
+}
+
+.l-container .form input#building_number {
+    outline: 0;
+    background: #f2f2f2;
+    width: 47%;
+    border: 0;
+    margin: 0 0 15;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    left: 0;
+    float: left;
+}
+
+.l-container .form button {
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #252525;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 2;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+}
+
+.l-container .form button:hover,
+.form button:active,
+.form button:focus {
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    background: #c59b08;
+}
+
+.l-container .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.l-container .form .message#r {
+    margin: 5px 0 0;
+}
+
+.l-container .form .message a {
+    color: black;
+    text-decoration: none;
+}
+
+.l-container .form .message a:hover {
+    color: gold;
+    -webkit-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -ms-transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+}
+
+.l-container .form .reset-password-form {
+    display: block;
+    -webkit-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -ms-transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+}
+
+.l-container .container {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.l-container .container:before,
+.container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.l-container .container .info {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.l-container .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #131313;
+}
+
+.l-container .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+}
+
+.l-container .container .info span a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.l-container .container .info span .fa {
+    color: #EF3B3A;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 15px;
+}
+
+.valid {
+    color: green;
+    text-decoration-line: line-through;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    color: #171C2B;
+}
+
+.invalid {
+    color: rgba(173, 13, 13, 0.616);
+}
+
+.invalid:before {
+    position: relative;
+    color: rgba(173, 13, 13, 0.616);
+}
+
+h4 {
+    color: #171C2B;
+    margin-bottom: 10px;
+}
+
+.l-container .far {
+    margin-right: 50;
+    padding: 15 10;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    color: #171C2B;
+    -moz-padding: 77 10;
+}
+
+.l-container .fas {
+    margin-right: 50;
+    padding: 55px 10;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    color: #171C2B;
+}
+
+.l-container .fad {
+    margin-right: 50;
+    padding: 15 10;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    color: #171C2B;
+}
+
+.login-bar {
+    background-color: #252525;
+    width: 100%;
+    height: 65;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 15;
+    margin-bottom: 30;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: white;
+}
+
+.login-bar-reset {
+    background-color: #252525;
+    width: 100%;
+    height: 65;
+    line-height: 3.1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin-bottom: 30;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: white;
+}
+
+.login-bar p {
+    margin-right: 70;
+    float: right;
+    font-size: 18px;
+    justify-content: center;
+    letter-spacing: 2;
+    margin-top: 5;
+}
+
+.login-bar-reset p {
+    font-size: 18px;
+    justify-content: center;
+    letter-spacing: 2;
+    margin-top: 5;
+}
+
+.login-bar #logo {
+    margin-right: 30;
+}
+
+.l-container .form .input-email-reset {
+    margin-top: 40;
+}
+
+
+/* END OF LOGIN AND REGISTER PAGE */

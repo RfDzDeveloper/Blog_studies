@@ -140,7 +140,7 @@ class DatabaseService:
             raise Comment.DoesNotExist(
                 f"Can't edit this: {request.POST['comment_id']}.\nThis comment don't exists!")
         com_db: Comment = Comment.objects.filter(id=request.POST['comment_id'])[0]
-        com_db = comment
+        com_db.text = comment.text
         com_db.save()
         return com_db    
     
