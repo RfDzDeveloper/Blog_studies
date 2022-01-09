@@ -10,13 +10,40 @@
                 <ul>
                     <li><i id='add-icon' class="fas fa-plus"></i>ADD NEW POST</li>
                 </ul>
-                <input type='text' name='title' placeholder='Enter title'/>
-                <textarea type='text' placeholder='Enter something..' name='text'></textarea>
+                <input type='text' id='text-title-post' name='title' placeholder='Enter title'/>
+                <textarea id="text-post"type='text' placeholder='Enter something..' name='text'></textarea><div class="count">Characters: <a id="charCount">0</a></div>
                 <input type='hidden' value="{{user.id}}" name="user_id"/>    
                 <button>ADD</button>
             </form>
         
    </div>
 </div>
+<script>
+var input = document.querySelector("#text-post");
+var input2 = document.querySelector("#text-title-post"),
+charCount = document.querySelector("#charCount");
 
+var onKeyDown = function () {
+
+  charCount.textContent = input.value.length+1;
+
+  if(charCount.textContent >= 20){
+    charCount.style.color="green";
+    }else{
+      charCount.style.color="red";
+    }
+};
+var onKeyDown2 = function () {
+    charCount.textContent=input2.value.length+1;
+    if(charCount.textContent >= 5){
+    charCount.style.color="green";
+    }else{
+      charCount.style.color="red";
+    }
+};
+
+console.log(charCount.textContent);
+input.addEventListener("keydown",onKeyDown);
+input2.addEventListener("keydown",onKeyDown2);
+</script>
 {% endblock content %}

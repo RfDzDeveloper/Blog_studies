@@ -69,24 +69,30 @@
                  <button id="rate">RATE</button>
                 </form>
              </div>
-             
-            <div class='comment'>
-                <ul>
-                    <li class="comment-date-user">21/03/2021 / Danielowy<span id="edit-comment"><i class="fas fa-edit"></i></span></li>
-                    <li class="comment-content">Oto przykładowy komentarz dla tego posta.</li>
-
-                </ul>
-            </div>
             
             {% for comment in comments %}
-            {% if comment %}
-            <div class='comment'>
+            {% if comment.post.id == item.id %}
+            <div class='comment' value="{{comment.id}}">
                 <ul>
-                    <li class="comment-date-user">{{comment.publish_date}} / {{comment.user}}<span id="edit-comment"><i class="fas fa-edit"></i></span></li>
+                    <li class="comment-date-user">{{comment.publish_date}} / {{comment.user}}<span id="edit-commentt"><i class="fas fa-edit"></i></span></li>
                     <li class="comment-content">{{comment.text}}</li>
 
                 </ul>
             </div>
+
+            <div class="edit-comment-content">
+              <div class="edit-comment-content-div"><span id="close-edit-comment">X</span>
+                <h3 style='letter-spacing: 2;'>EDIT COMMENT HERE </h3>
+                  <form class="post-comment-edit" action="{% url 'edit_comment' %}" method="post">
+                  {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{item.id}}"/>
+                    <input type="hidden" name="comment_id" value="{{comment.id}}"/>
+                    <textarea name="text" class="comment-edit-textarea">{{ comment.text }}</textarea>
+                    <button type="submit"><i class="fas fa-plus"></i></button>
+                  </form>
+              </div>
+            </div>     
+
             {% endif %}
             {% empty %}
          
@@ -100,24 +106,12 @@
                 <form class="post-edit" action="{% url 'edit_post' %}" method="post">
                 {% csrf_token %}
                   <input type="hidden" name="post_id" value="{{item.id}}"/>
+                  <input name='title' class="input-title-edit" value="{{item.title}}"/ placeholder="{{item.title}}">
                   <textarea name="text" class="post-edit-textarea">{{ item.text }}</textarea>
                   <button id="submit-post"type="submit"><i class="fas fa-plus"></i></button>
                 </form>
             </div>
-          </div>      
-
-
-         <div class="edit-comment-content">
-            <div class="edit-comment-content-div"><span id="close-edit-comment">X</span>
-              <h3 style='letter-spacing: 2;'>EDIT COMMENT HERE </h3>
-                <form class="post-comment-edit" action="{% url 'edit_comment' %}" method="post">
-                {% csrf_token %}
-                  <input type="hidden" name="post_id" value="{{item.id}}"/>
-                  <textarea name="text" class="comment-edit-textarea">{{ comment.text }}</textarea>
-                  <button type="submit"><i class="fas fa-plus"></i></button>
-                </form>
-            </div>
-          </div>      
+          </div>          
 
          {% endfor %}
     </div>
@@ -145,45 +139,41 @@ star[i].addEventListener('click', function(){
     commentsWidth[0].style.width="645";
 });
 }
-var editCommentDiv = document.querySelectorAll(".edit-comment-content");
-var closeEditComment = document.querySelectorAll("#close-edit-comment");
-var editCommentButton = document.querySelectorAll("#edit-comment");
-
-for(let o=0; o<editCommentButton.length; o++){
-  function openEditCommentDiv(){
-    if(editCommentDiv[o].style.display !== "block"){
-  editCommentDiv[o].style.display="block";
-  }
-}
-function closeEditCommentDiv(){
-  if(editCommentDiv[o].style.display !== "none"){
-  editCommentDiv[o].style.display="none";
-  }
-}
-  editCommentButton[o].addEventListener('click', openEditCommentDiv, false);
-  closeEditComment[o].addEventListener('click', closeEditCommentDiv, false);
-}
 
 var editPostDiv = document.querySelectorAll(".edit-post-content");
 var closeEditPost = document.querySelectorAll("#close-edit-post");
 var editPostButton = document.querySelectorAll("#edit-post");
 
-for(let h=0; h<editPostDiv.length; h++){
 
-    function openEditPostDiv(){
-        if(editPostDiv[h].style.display !== "block"){
-            editPostDiv[h].style.display="block";
+editPostButton[0].addEventListener('click',function(){
+        if(editPostDiv[0].style.display !== "block"){
+            editPostDiv[0].style.display="block";
       }
+    });
+closeEditPost[0].addEventListener('click',function(){
+      if(editPostDiv[0].style.display !== "none"){
+        editPostDiv[0].style.display="none";
     }
-    function closeEditPostDiv(){
-      if(editPostDiv[h].style.display !== "none"){
-        editPostDiv[h].style.display="none";
-      }
+    }); 
+
+var editCommentDiv = document.getElementsByClassName("edit-comment-content");
+var closeEditComment = document.querySelectorAll("#close-edit-comment");
+var editCommentButton = document.querySelectorAll("#edit-commentt");
+
+for(let o=0; o<editCommentButton.length; o++){
+  editCommentButton[o].addEventListener('click', function(){
+    if(editCommentDiv[o].style.display !== "block"){
+    editCommentDiv[o].style.display="block";
     }
-    editPostButton[h].addEventListener('click', openEditPostDiv, false);
-      closeEditPost[h].addEventListener('click', closeEditPostDiv, false); 
+  },false);
+  
+  closeEditComment[o].addEventListener('click', function(){
+    if(editCommentDiv[o].style.display !== "none"){
+      editCommentDiv[o].style.display="none";
+    }
+  },false);
+ 
+ }
 
-
-}
 </script>
 {% endblock content %}
