@@ -136,7 +136,8 @@ def delete_post(request: HttpRequest):
         messages.success(request, context['message'])        
     except Exception as ex:
         messages.error(request, ex)
-    return redirect('view_user_post')
+    finally:
+        return redirect('view_user_post')
 
 @login_required(login_url='login')
 def add_comment(request: HttpRequest):

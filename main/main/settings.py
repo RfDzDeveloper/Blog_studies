@@ -12,12 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ''
 
 DEBUG = True
-
-ALLOWED_HOSTS = []
+# SECRET_KEY = os.getenv('SECRET_KEY')
+# DEBUG = os.getenv('DEBUG')
 
 # SMTP Configuration
 EMAIL_BACKEND = ''
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = ''
 EMAIL_PORT = ''
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = ''
@@ -78,7 +78,8 @@ DATABASES = {
 
 ALLOWED_HOSTS = [
     'gentle-blog.azurewebsites.net',
-    '127.0.0.1'
+    '127.0.0.1',
+    '0.0.0.0'
 ]
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -116,6 +117,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
