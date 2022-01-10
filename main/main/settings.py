@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'qd5_pu$s_gafy^@+r39(l_!&zoby$j9_5qjn7^xgd0(k03_39&'
 
 DEBUG = True
 # SECRET_KEY = os.getenv('SECRET_KEY')
@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles/'),
 )
 MEDIA_ROOT = (
     os.path.join(BASE_DIR, 'media'),

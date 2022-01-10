@@ -5,7 +5,7 @@ services:
     image: bloggapp.azurecr.io/gentle-blog:latest
     container_name: web_part
     volumes:
-      - static:/static
+      - static:/app/staticfiles/
     env_file:
       - .env
     build:
@@ -17,7 +17,8 @@ services:
     container_name: server_part
     build: ./nginx
     volumes:
-      - static:/static
+      - static:/app/staticfiles/
+      - ./config/nginx/:/etc/nginx/conf.d
     ports:
       - "80:80"
     depends_on:
