@@ -5,8 +5,8 @@ from django.utils.html import strip_tags
 
 
 class EmailService:
-    forgot_pass_template: str = 'office/blog/forgot_password.html/'
-    confirmation_account: str = 'office/blog/confirm_account.html/'
+    forgot_pass_template: str = 'forgot_password.html/'
+    confirmation_account: str = 'confirm_account.html/'
     main_email: str = settings.EMAIL_HOST_USER
 
     def __init__(self, firstname: str, to: list[str], email: str = None):        
